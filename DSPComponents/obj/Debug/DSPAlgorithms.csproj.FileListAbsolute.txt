@@ -1,0 +1,6 @@
+D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\bin\Debug\DSPComponents.dll
+D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\bin\Debug\DSPComponents.pdb
+D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\obj\Debug\DSPAlgorithms.csproj.AssemblyReference.cache
+D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\obj\Debug\DSPAlgorithms.csproj.CoreCompileInputs.cache
+D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\obj\Debug\DSPComponents.dll
+D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\obj\Debug\DSPComponents.pdb
