@@ -14,7 +14,31 @@ namespace DSPAlgorithms.Algorithms
 
         public override void Run()
         {
-            throw new NotImplementedException();
+            List<float> OutputSamples = new List<float>();
+            int OutputSignalSize = 0;
+
+            for (int i = 0; i < InputSignals.Count; i++)
+            {
+                if(InputSignals[i].Samples.Count > OutputSignalSize)
+                {
+                    OutputSignalSize = InputSignals[i].Samples.Count;
+                }
+            }
+
+            for (int i = 0; i < OutputSignalSize; i++)
+            {
+                float Sample = 0;
+                for (int j = 0; j < InputSignals.Count; j++)
+                {
+                    if (InputSignals[j].Samples.Count > i)
+                        Sample += InputSignals[j].Samples[i];
+                    else
+                        Sample += 0;
+                }
+                OutputSamples.Add(Sample);
+            }
+
+            OutputSignal = new Signal(OutputSamples, false);
         }
     }
 }
