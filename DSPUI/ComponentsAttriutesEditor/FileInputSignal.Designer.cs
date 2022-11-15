@@ -38,24 +38,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(16, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.Size = new System.Drawing.Size(62, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "File Path:";
             // 
             // FilePathTXTBX
             // 
-            this.FilePathTXTBX.Location = new System.Drawing.Point(70, 20);
+            this.FilePathTXTBX.Location = new System.Drawing.Point(93, 25);
+            this.FilePathTXTBX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FilePathTXTBX.Name = "FilePathTXTBX";
-            this.FilePathTXTBX.Size = new System.Drawing.Size(470, 20);
+            this.FilePathTXTBX.Size = new System.Drawing.Size(625, 22);
             this.FilePathTXTBX.TabIndex = 1;
+            this.FilePathTXTBX.TextChanged += new System.EventHandler(this.FilePathTXTBX_TextChanged);
             // 
             // ChangeFileBTN
             // 
-            this.ChangeFileBTN.Location = new System.Drawing.Point(70, 47);
+            this.ChangeFileBTN.Location = new System.Drawing.Point(93, 58);
+            this.ChangeFileBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ChangeFileBTN.Name = "ChangeFileBTN";
-            this.ChangeFileBTN.Size = new System.Drawing.Size(107, 23);
+            this.ChangeFileBTN.Size = new System.Drawing.Size(143, 28);
             this.ChangeFileBTN.TabIndex = 2;
             this.ChangeFileBTN.Text = "New Signal File";
             this.ChangeFileBTN.UseVisualStyleBackColor = true;
@@ -64,17 +68,19 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 97);
+            this.label2.Location = new System.Drawing.Point(17, 119);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(45, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Signal";
             // 
             // PlotSignalBTN
             // 
-            this.PlotSignalBTN.Location = new System.Drawing.Point(70, 92);
+            this.PlotSignalBTN.Location = new System.Drawing.Point(93, 113);
+            this.PlotSignalBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PlotSignalBTN.Name = "PlotSignalBTN";
-            this.PlotSignalBTN.Size = new System.Drawing.Size(75, 23);
+            this.PlotSignalBTN.Size = new System.Drawing.Size(100, 28);
             this.PlotSignalBTN.TabIndex = 4;
             this.PlotSignalBTN.Text = "Plot";
             this.PlotSignalBTN.UseVisualStyleBackColor = true;
@@ -82,14 +88,15 @@
             // 
             // FileInputSignal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 133);
+            this.ClientSize = new System.Drawing.Size(767, 164);
             this.Controls.Add(this.PlotSignalBTN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ChangeFileBTN);
             this.Controls.Add(this.FilePathTXTBX);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FileInputSignal";

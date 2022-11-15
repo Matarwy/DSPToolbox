@@ -119,5 +119,10 @@ namespace DSPUI.ComponentsAttriutesEditor
             Data.FilePath = null;
             FilePathTXTBX.Text = "";
         }
+
+        private void FilePathTXTBX_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
