@@ -14,7 +14,14 @@ namespace DSPAlgorithms.Algorithms
 
         public override void Run()
         {
-            throw new NotImplementedException();
+            List<float> samples = new List<float>();
+            List<int> indecies = new List<int>();
+            for(int i = (InputSignal.SamplesIndices.Count -1); i >= 0;i--)
+            {
+                indecies.Add(InputSignal.SamplesIndices[i]*(-1));
+                samples.Add(InputSignal.Samples[i]);
+            }
+            OutputFoldedSignal = new Signal(samples, indecies, false);
         }
     }
 }

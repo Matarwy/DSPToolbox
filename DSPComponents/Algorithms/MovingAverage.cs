@@ -15,7 +15,17 @@ namespace DSPAlgorithms.Algorithms
  
         public override void Run()
         {
-            throw new NotImplementedException();
+            List<float> samples = new List<float>();
+            for(int i = 0; i < (InputSignal.Samples.Count - InputWindowSize +1); i++)
+            {
+                samples.Add(0);
+                for(int j = i; j < (InputWindowSize + i); j++)
+                {
+                    samples[i] += InputSignal.Samples[j];
+                }
+                samples[i] /= InputWindowSize;
+            }
+            OutputAverageSignal = new Signal(samples, false);
         }
     }
 }
