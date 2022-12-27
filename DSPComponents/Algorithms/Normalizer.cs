@@ -16,26 +16,28 @@ namespace DSPAlgorithms.Algorithms
 
         public override void Run()
         {
-            List<float> OutputSamples = new List<float>();
-            float MaxSampleValue = InputSignal.Samples[0];
-            float MinSampleValue = InputSignal.Samples[0];
 
-            for(int i=0; i< InputSignal.Samples.Count; i++)
+            List<float> output = new List<float>();
+            float maxi = InputSignal.Samples.Max();
+            float mini = InputSignal.Samples.Min();
+            if (InputMinRange == 0)
             {
-                if(InputSignal.Samples[i] > MaxSampleValue)
-                    MaxSampleValue = InputSignal.Samples[i];
 
-                if(InputSignal.Samples[i] < MinSampleValue)
-                    MinSampleValue = InputSignal.Samples[i];
+                for (int i = 0; i < InputSignal.Samples.Count; i++)
+                {
+                    float x = (InputSignal.Samples[i] - mini) / (maxi - mini);
+                    output.Add(x);
+                }
             }
-
-            for (int i = 0; i < InputSignal.Samples.Count; i++)
+            else
             {
-                float Sample = (InputMaxRange - InputMinRange)*((InputSignal.Samples[i] - MinSampleValue) / (MaxSampleValue - MinSampleValue)) + InputMinRange;
-                OutputSamples.Add(Sample);
+                for (int i = 0; i < InputSignal.Samples.Count; i++)
+                {
+                    float x = (2 * ((InputSignal.Samples[i] - mini) / (maxi - mini))) - 1;
+                    output.Add(x);
+                }
             }
-
-            OutputNormalizedSignal = new Signal(OutputSamples, false);
+            OutputNormalizedSignal = new Signal(output, false);
         }
     }
 }
