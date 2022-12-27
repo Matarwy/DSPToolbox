@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using DSPAlgorithms.DataStructures;
@@ -12,38 +13,50 @@ namespace DSPAlgorithms.Algorithms
         public Signal InputTimeDomainSignal { get; set; }
         public float InputSamplingFrequency { get; set; }
         public Signal OutputFreqDomainSignal { get; set; }
-        struct Complex
-        {
-            public float real, imagin;
-        }
+        public List<KeyValuePair<float, float>> complex { get; set; }
         public override void Run()
         {
-            
-            List<float> Frequencies = new List<float>();
-            List<float> FrequenciesAmplitudes = new List<float>();
-            List<float> FrequenciesPhaseShifts = new List<float>();
-            float ePow;
-            float N = InputTimeDomainSignal.Samples.Count;
 
-            for (int i = 0; i < N; i++)
+            //Declare Our Lists are needed
+            List<float> output_signal_frequenciesAmplitudes = new List<float>();
+            List<float> output_signal_frequenciesPhaseShifts = new List<float>();
+            List<float> output_signal_frequencies = new List<float>();
+            complex = new List<KeyValuePair<float, float>>();
+            OutputFreqDomainSignal = new Signal(InputTimeDomainSignal.Samples, false);
+
+            for (int k = 0; k < InputTimeDomainSignal.Samples.Count(); k++)
             {
-                Complex complex = new Complex();
-                complex.real = 0;
-                complex.imagin = 0;
-                for(int j = 0; j < N; j++)
+                float real_value = 0; //real value var 
+                float imaginary_value = 0; //imaginary value var
+
+                //loop on all sample to get the freq component (real and imaginary)
+                for (int n = 0; n < InputTimeDomainSignal.Samples.Count(); n++)
                 {
-                    ePow = (2 * i * j * ((float)Math.PI)) / N;
-                    complex.real += InputTimeDomainSignal.Samples[j] * (float)Math.Cos(ePow);
-                    complex.imagin += -InputTimeDomainSignal.Samples[j] * (float)Math.Sin(ePow);
+                    if (k == 0 || n == 0) // if statisfied then freq component is real part only 
+                    {
+                        real_value += InputTimeDomainSignal.Samples[n];
+                    }
+                    else
+                    {
+                        int N = InputTimeDomainSignal.Samples.Count();
+                        double temp_power = ((2 * Math.PI * k * n) / N);
+
+                        real_value += (float)(InputTimeDomainSignal.Samples[n] * Math.Cos(temp_power));
+                        imaginary_value += (float)(-1 * InputTimeDomainSignal.Samples[n] * Math.Sin(temp_power));
+                    }
                 }
+                float omega = (float)Math.Round(((2 * Math.PI * InputSamplingFrequency) / InputTimeDomainSignal.Samples.Count()), 1);
 
-                float amp = (float)Math.Sqrt((float)Math.Pow(complex.real,2)+(float)Math.Pow(complex.imagin, 2));
-                float phase = (float)Math.Atan2(complex.imagin,complex.real);
-
-                FrequenciesAmplitudes.Add(amp);
-                FrequenciesPhaseShifts.Add(phase);
+                //genrate complex list
+                complex.Add(new KeyValuePair<float, float>(real_value, imaginary_value));
+                //freq value
+                output_signal_frequencies.Add(k * omega);
+                //freq amplitude
+                output_signal_frequenciesAmplitudes.Add((float)Math.Sqrt(Math.Pow(complex[k].Key, 2) + Math.Pow(complex[k].Value, 2)));
+                //phaseshift for freq
+                output_signal_frequenciesPhaseShifts.Add((float)Math.Atan2(complex[k].Value, complex[k].Key));
             }
-            OutputFreqDomainSignal = new Signal(false, Frequencies, FrequenciesAmplitudes, FrequenciesPhaseShifts);
+            OutputFreqDomainSignal = new Signal(false, output_signal_frequencies, output_signal_frequenciesAmplitudes, output_signal_frequenciesPhaseShifts);
         }
     }
 }

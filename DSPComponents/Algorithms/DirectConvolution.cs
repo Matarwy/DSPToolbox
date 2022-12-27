@@ -18,38 +18,41 @@ namespace DSPAlgorithms.Algorithms
         /// </summary>
         public override void Run()
         {
-            int indiceBegin = InputSignal1.SamplesIndices[0] + InputSignal2.SamplesIndices[0];
+            List<float> out_sample = new List<float>();
+            List<int> Sample_index = new List<int>();
 
-            List<float> samples = new List<float>();
-            List<int> indices = new List<int>();
-            for(int i =0; i < ((InputSignal1.Samples.Count + InputSignal2.Samples.Count) -1); i++)
+            float sum = 0;
+
+            for (int i = 0; i < InputSignal1.Samples.Count + InputSignal2.Samples.Count - 1; i++)
             {
-                samples.Add(0);
-                for (int j =0; j< InputSignal1.Samples.Count; j++)
+                for (int j = 0; j < InputSignal2.Samples.Count; j++)
                 {
-                    if(((i-j) >= 0) && ((i-j) < InputSignal2.Samples.Count))
+                    if (i - j >= 0 && i - j < InputSignal1.Samples.Count)
                     {
-                        samples[i] += InputSignal2.Samples[i - j] * InputSignal1.Samples[j];
-                    } 
+                        sum += InputSignal1.Samples[i - j] * InputSignal2.Samples[j];
+
+                    }
                 }
+                if (i + 1 == InputSignal1.Samples.Count + InputSignal2.Samples.Count - 1 && sum == 0)
+                {
+                    break;
+                }
+                out_sample.Add(sum);
 
-                indices.Add(indiceBegin);
-                indiceBegin++;
-                Console.WriteLine(indices[i]);
-                Console.WriteLine(samples[i]);
-            }
-            while (samples[samples.Count - 1] == 0)
-            {
-                samples.RemoveAt(samples.Count - 1);
-                indices.RemoveAt(indices.Count - 1);
-            }
+                sum = 0;
+                if (i == 0)
+                {
+                    int index = InputSignal1.SamplesIndices[i] + InputSignal2.SamplesIndices[i];
+                    Sample_index.Add(index);
+                }
+                else
+                {
+                    int index = Sample_index.Last<int>(); // equals -3 then ++
 
-            while (samples[0] == 0)
-            {
-                samples.RemoveAt(0);
-                indices.RemoveAt(0);
+                    Sample_index.Add((index + 1));
+                }
             }
-            OutputConvolvedSignal = new Signal(samples, indices, false);
+            OutputConvolvedSignal = new Signal(out_sample, Sample_index, false);
         }
     }
 }
