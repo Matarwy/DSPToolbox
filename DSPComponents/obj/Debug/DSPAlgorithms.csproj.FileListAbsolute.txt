@@ -4,3 +4,9 @@ D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\obj\Deb
 D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\obj\Debug\DSPAlgorithms.csproj.CoreCompileInputs.cache
 D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\obj\Debug\DSPComponents.dll
 D:\FCIS\full 2023 first semister\DSP\Labs\Tasks\DSPToolbox\DSPComponents\obj\Debug\DSPComponents.pdb
+C:\Users\Matarwy\source\repos\DSPToolbox\DSPComponents\obj\Debug\DSPAlgorithms.csproj.AssemblyReference.cache
+C:\Users\Matarwy\source\repos\DSPToolbox\DSPComponents\obj\Debug\DSPAlgorithms.csproj.CoreCompileInputs.cache
+C:\Users\Matarwy\source\repos\DSPToolbox\DSPComponents\obj\Debug\DSPComponents.dll
+C:\Users\Matarwy\source\repos\DSPToolbox\DSPComponents\obj\Debug\DSPComponents.pdb
+C:\Users\Matarwy\source\repos\DSPToolbox\DSPComponents\bin\Debug\DSPComponents.dll
+C:\Users\Matarwy\source\repos\DSPToolbox\DSPComponents\bin\Debug\DSPComponents.pdb
